@@ -14,6 +14,13 @@ This app was developed with the aim of being able to download videos from YouTub
 - [Discord](https://discord.gg/9jbB6wnqX3)
 
 
+## Download Executable
+
+- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.1WIN-PORT.zip?raw=true)
+- Download Linux (Not available)
+
+
+
 
 ## Installation
 
