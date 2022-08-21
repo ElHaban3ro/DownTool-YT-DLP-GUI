@@ -33,7 +33,8 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
     for index_video in range(len(video)):
         try:
-                
+        # if True:
+
             video[index_video] = video[index_video].replace(' ', '')
             video_info = YoutubeDL().extract_info(f'{video[index_video]}', download = 
             False)
@@ -49,10 +50,15 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             
 
             name = video_info['title']
-            # print(video_info)
+            print(video_info)
 
             button['text'] = 'Download...'
-            title_widget['text'] = f'{name}'
+
+
+            if len(name) > 20:
+                    title_widget['text'] = f'{name[:20]}...'
+            else:
+                title_widget['text'] = f'{name}'
             channel['text'] = f'Channel: {video_info["channel"]}'
 
             if len(video) > 1:
@@ -125,7 +131,7 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             percent_text['text'] = f""
             bytes_widget['text'] = f'Weight and format: 0MiB - ###'
 
-            
+            os.remove(rf'{route_miniature}/miniature.png')
 
 
             if len(video) == 1:
@@ -144,7 +150,8 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
         except:
-    
+        # else:
+
             tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
 
 
@@ -159,7 +166,7 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             # inputContent.delete(0, 'end')
             
 
-    put_m = tk.Label(frame, bg = '#260b12', width = 320, height = 180)
+    put_m = tk.Label(frame, bg = '#0b0024', width = 320, height = 180)
     put_m.place(relx = .5, rely = .5, anchor = 'center')
     
     print(f'Se Ha hecho la descarga de: {video}')
@@ -174,12 +181,3 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
     
     checkbox_mp3['state'] = 'normal'
     checkbox_mp4['state'] = 'normal'
-    
-
-    # except:
-    #     tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try againaaaaaaaaaaaaaaaaaaaaaaaaaaaaa)')
-    #     button['state'] = 'normal'
-    #     inputContent['state'] = 'normal'
-    #     folder_button['state'] = 'normal'
-    #     button['text'] = 'Download'
-    #     inputContent.delete(0, 'end')

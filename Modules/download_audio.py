@@ -40,7 +40,13 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             name = video_info['title']
 
             button['text'] = 'Download...'
-            title_widget['text'] = f'{name}'
+
+            if len(name) > 20:
+                title_widget['text'] = f'{name[:20]}...'
+            else:
+                title_widget['text'] = f'{name}'
+
+
             channel['text'] = f'Channel: {video_info["channel"]}'
 
             json_video_info = json.dumps(video_info, indent = 4)
