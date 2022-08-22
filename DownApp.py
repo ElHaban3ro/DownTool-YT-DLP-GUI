@@ -18,7 +18,7 @@ from Modules.download_video import video_downloader
 from PopUps.configuration_popup import configWindow_popup
 from PopUps.aboutme_popup import aboutme_popup
 
-
+from Modules.download_from_playlist import playlist_download
 
 
 # Config main window.
@@ -47,7 +47,7 @@ transparent = './Resources/Icons/transparente.png'
 transparent = PhotoImage(file = transparent)
 
 
-fondo = tk.Label(root, text = '', font = ('Arial', 20, 'bold italic'), bg = '#fe555c', fg = '#f5f5f5')
+fondo = tk.Label(root, text = '', font = ('Arial', 20, 'bold italic'), bg = '#FE5A56', fg = '#f5f5f5')
 fondo.place(relx = .5, rely = .5, anchor = 'center', width=700, height=415
 )
 
@@ -86,7 +86,7 @@ downloads_history = []
 
 
 # Video Frame
-video_info_frame = tk.Canvas(root, width = 670, bg = '#fe555c', height = 200, borderwidth = 0, highlightthickness = 0)
+video_info_frame = tk.Canvas(root, width = 670, bg = '#FE5A56', height = 200, borderwidth = 0, highlightthickness = 0)
 video_info_frame.place(relx = .5, rely = .28, anchor = 'center')
 
 video_miniature_frame = tk.Frame(video_info_frame, bg = '#ffffff', width = 320, height = 180)
@@ -104,30 +104,30 @@ h = res[1]
 
 
 
-form_download = tk.Frame(root, bg = '#fe555c', width = 670, height = 165)
+form_download = tk.Frame(root, bg = '#FE5A56', width = 670, height = 165)
 form_download.place(relx = .5, rely = .76, anchor= tk.CENTER)
 
-download_config_layer = tk.Frame(form_download, bg = '#fe555c', width = 300, height = 150, highlightthickness=5)
+download_config_layer = tk.Frame(form_download, bg = '#FE5A56', width = 300, height = 150, highlightthickness=5)
 download_config_layer.config(highlightbackground = 'white', highlightcolor = 'white')
 
 download_config_layer.place(relx = .24, rely = .5, anchor = 'center')
 
 
-history_layer = tk.Frame(form_download, bg = '#fe555c', width = 334, height = 150, highlightthickness=5)
+history_layer = tk.Frame(form_download, bg = '#FE5A56', width = 334, height = 150, highlightthickness=5)
 history_layer.place(relx = .983, rely = .5, anchor = 'e')
 history_layer.config(highlightbackground = 'white', highlightcolor = 'white')
 
 # history_layer.place(relx = .24, rely = .5, anchor = 'center')
 
 
-history_title = tk.Label(history_layer, text = 'History', font = ('Arial', 15, 'bold italic'), bg = '#fe555c', fg = '#f5f5f5', bd=-2, borderwidth=0)
+history_title = tk.Label(history_layer, text = 'History', font = ('Arial', 15, 'bold italic'), bg = '#FE5A56', fg = '#f5f5f5', bd=-2, borderwidth=0)
 history_title.place(relx = .15, rely = .15, anchor = 'center')
 
-history_text_frame = tk.Frame(history_layer, bg = '#fe555c', width=300, height=90)
+history_text_frame = tk.Frame(history_layer, bg = '#FE5A56', width=300, height=90)
 history_text_frame.place(relx = .5, rely=.6, anchor = 'center')
 
 
-history_text = tk.Label(history_text_frame, text = '', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg = 'yellow', height=6, justify='left', padx=15)
+history_text = tk.Label(history_text_frame, text = '', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = '#56FAFE', height=6, justify='left', padx=15)
 history_text.place(relx = .0, rely = .0, anchor = 'nw')
 
 
@@ -164,24 +164,24 @@ routes = [route]
 
 
 
-features_text_title = tk.Label(download_config_layer, text = 'Video Unknown', font = ('Arial', 15, 'bold italic'), bg = '#fe555c', fg = '#f5f5f5')
+features_text_title = tk.Label(download_config_layer, text = 'Video Unknown', font = ('Arial', 15, 'bold italic'), bg = '#FE5A56', fg = '#f5f5f5')
 features_text_title.place(relx = .05, rely = .16, anchor = 'w')
 
 
 
 
-features_text_channel = tk.Label(download_config_layer, text = 'Channel: Unknown', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg = '#f5f5f5')
+features_text_channel = tk.Label(download_config_layer, text = 'Channel: Unknown', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = '#f5f5f5')
 features_text_channel.place(relx = .05, rely = .38, anchor = 'w')
 
-features_text_more = tk.Label(download_config_layer, text = 'Weight and format: 0MB - ###', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg = '#f5f5f5')
+features_text_more = tk.Label(download_config_layer, text = 'Weight and format: 0MB - ###', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = '#f5f5f5')
 features_text_more.place(relx = .05, rely = .55, anchor = 'w')
 
 
 # Route text.
-route_text = tk.Label(download_config_layer, text = f'Save route: {route}', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg ='#f5f5f5')
+route_text = tk.Label(download_config_layer, text = f'Save route: {route}', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg ='#f5f5f5')
 route_text.place(relx = .05, rely = .73, anchor = 'w')
 
-restant_text = tk.Label(download_config_layer, text = f'Approximate time: 00:00', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg = '#f5f5f5')
+restant_text = tk.Label(download_config_layer, text = f'Approximate time: 00:00', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = '#f5f5f5')
 restant_text.place(relx = .05, rely = .9, anchor = 'w')
 
 
@@ -196,20 +196,20 @@ percent_text.place(relx = .05, rely = .965, anchor = 'w')
 
 # Checkbox zone.
     # Title format.
-format_title = tk.Label(video_info_frame, text = 'Select a format:', font = ('Arial', 15, 'italic bold'), bg = '#fe555c', fg = '#f5f5f5')
+format_title = tk.Label(video_info_frame, text = 'Select a format:', font = ('Arial', 15, 'italic bold'), bg = '#FE5A56', fg = '#f5f5f5')
 format_title.place(relx = .54, rely = .35,  anchor = 'w')
 
 
 option_download = IntVar()
 
 mp3_option = Radiobutton(video_info_frame, text = 'MP3', variable = option_download, value = 1)
-mp3_option.configure(bg = '#fe555c', activebackground = '#fe555c')
+mp3_option.configure(bg = '#FE5A56', activebackground = '#FE5A56')
 mp3_option.place(relx = .8, rely = .35, anchor = 'w')
 
 
 mp4_option = Radiobutton(video_info_frame, text = 'MP4', variable = option_download,
 value = 2)
-mp4_option.configure(bg = '#fe555c', activebackground = '#fe555c')
+mp4_option.configure(bg = '#FE5A56', activebackground = '#FE5A56')
 mp4_option.place(relx = .88, rely = .35, anchor = 'w')
 
 
@@ -261,8 +261,9 @@ def download_function(): # Create new thread (bug)
         elif route == 'C:/':
             tk.messagebox.showerror('¡Error!', 'Make sure to choose a path other than C:/\n(This causes permission errors)')
 
-        else:
-            # audio_downloader(link_video = input_link.get(), button = download_button)
+
+
+        else:      
             a = Thread(target = lambda: audio_downloader(link_video = input_link.get(), button = download_button, inputContent= input_link, route = route, route_miniature = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text)).start()
 
 

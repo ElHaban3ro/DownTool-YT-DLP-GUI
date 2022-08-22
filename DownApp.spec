@@ -37,7 +37,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='Resources\\Icons\\DownTool.ico',
+    icon='Resources\\Icons\\DownTool_2.ico',
 )
 coll = COLLECT(
     exe,

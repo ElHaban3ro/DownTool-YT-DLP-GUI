@@ -14,22 +14,51 @@ from PIL import ImageTk, Image
 
 def video_downloader(button, link_video, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
 
-    button['state'] = tk.DISABLED
-    inputContent['state'] = 'disabled'
-    folder_button['state'] = 'disabled'
-    button['text'] = 'Get Info...'
 
-
-    checkbox_mp3['state'] = 'disabled'
-    checkbox_mp4['state'] = 'disabled'
-
-    # try:
-
-    video = link_video
-    video = video.split(',') # Split by space (¿change?).
-
-
+    video = []
     videos_list_names = []
+    link_video.replace(' ', '')
+    video = link_video.split(',') # Split by space (¿change?).
+
+
+    if 'https://www.youtube.com/playlist?list=' in link_video:
+        try:
+            button['state'] = 'disabled'
+            inputContent['state'] = 'disabled'
+            folder_button['state'] = 'disabled'
+            button['text'] = 'Get PlayList Info...'
+
+
+            checkbox_mp3['state'] = 'disabled'
+            checkbox_mp4['state'] = 'disabled'
+
+
+            playlist_info = YoutubeDL().extract_info(link_video, download = 
+            False)
+            
+
+            for i in playlist_info['entries']:
+                video.append(i['webpage_url'])
+
+            video = video[1:]
+
+        except:
+            tk.messagebox.showerror('¡Error! ñ', 'Error 404. Make sure of the following: \nThe PlayList is not private. \nThe PlayList link is correct. \nYou have an internet connection.')
+
+
+    else:
+        button['state'] = tk.DISABLED
+        inputContent['state'] = 'disabled'
+        folder_button['state'] = 'disabled'
+        button['text'] = 'Get Info...'
+
+
+        checkbox_mp3['state'] = 'disabled'
+        checkbox_mp4['state'] = 'disabled'
+
+
+
+
 
     for index_video in range(len(video)):
         try:
@@ -50,6 +79,9 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             
 
             name = video_info['title']
+            name = name.replace('/', '-')
+
+
             print(video_info)
 
             button['text'] = 'Download...'

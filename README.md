@@ -16,7 +16,7 @@ This app was developed with the aim of being able to download videos from YouTub
 
 ## Download Executable
 
-- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.1WIN-PORT.zip?raw=true)
+- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.2WIN-PORT.zip?raw=true)
 - Download Linux (Not available)
 
 
@@ -24,10 +24,22 @@ This app was developed with the aim of being able to download videos from YouTub
 
 ## Installation
 
-Install Depenences (the most important) with pip
+Use pip to install requirements
 
 ```bash
-  pip install yt_dlp
-  python -m pip install pillow
+  pip install -r requirements.txt
 ```
     
+To run the program in development mode, once the requirements have been installed, simply run the DownApp.py file
+
+---
+
+If you want to create a package for your operating system, use the command:
+
+```bash
+  pyinstaller --windowed --icon=./Resources/Icons/DownTool_2.ico DownApp.py
+```
+
+And then move the ***Resources*** folder to ***dist/DownApp/***.
+
+We do this so that the resources like images or fonts work correctly. Once this is done you can use the executable.Next, you can remove the folder from the ***dist*** directory and delete these two: ***dist*** and ***build***.

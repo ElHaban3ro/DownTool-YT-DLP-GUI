@@ -16,7 +16,7 @@ def configWindow_popup(root, route, routes_list, file_route, function_open, back
 
     config_window = tk.Toplevel(root)
 
-    config_window.config(bg = '#fe555c') # Config window.
+    config_window.config(bg = '#FE5A56') # Config window.
     res = [500, 200]
     config_window.geometry(f'{res[0]}x{res[1]}')
     config_window.resizable(False, False)
@@ -24,7 +24,7 @@ def configWindow_popup(root, route, routes_list, file_route, function_open, back
     config_window.title('Configurations')
 
 
-    title = tk.Label(config_window, text = 'Configurations', font = ('Arial', 30, 'italic bold'), bg = '#fe555c', fg = '#f5f5f5')
+    title = tk.Label(config_window, text = 'Configurations', font = ('Arial', 30, 'italic bold'), bg = '#FE5A56', fg = '#f5f5f5')
     title.place(relx = .5, rely = .2, anchor = 'center')
 
 
@@ -74,7 +74,7 @@ def configWindow_popup(root, route, routes_list, file_route, function_open, back
     # Options:
         # predefined routed.
     p_route = route
-    p_route_text = tk.Label(config_window, text = f'Predefined route: {p_route}', font = ('Arial', 10, 'italic'), bg = '#fe555c', fg = 'white')
+    p_route_text = tk.Label(config_window, text = f'Predefined route: {p_route}', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = 'white')
     p_route_text.place(relx = .07, rely = .6, anchor = 'w')
 
 
