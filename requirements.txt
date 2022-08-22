@@ -5,6 +5,11 @@ charset-normalizer==2.1.0
 docutils==0.19
 future==0.18.2
 idna==3.3
+Kivy==2.1.0
+kivy-deps.angle==0.3.2
+kivy-deps.glew==0.3.1
+kivy-deps.sdl2==0.4.5
+Kivy-Garden==0.1.5
 mutagen==1.45.1
 pefile==2022.5.30
 Pillow==9.2.0
