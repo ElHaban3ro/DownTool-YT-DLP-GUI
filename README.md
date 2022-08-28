@@ -10,6 +10,11 @@ The **App** is developed with the **Tkinter** GUI library and uses **yt-dlp** to
 
 This app was developed with the goal of being able to download YouTube videos in **mass** without having to deal with pages full of ads. Do you want to improve it? Go ahead :) Fork
 
+## (1.3) What's new?
+- Now, support for downloading your spotify playlists
+- Support for youtube playlist.
+- Fixed several VERY important bugs.
+
 
 ## ¿How Work?
 
@@ -21,21 +26,24 @@ You can do this either as a single link:
 ```
 https://www.youtube.com/watch?v=-KkX7UVdTN8
 ```
-
+---
 Or several links separated by commas:
 ```
 https://www.youtube.com/watch?v=nDZvMKfrzaM, https://www.youtube.com/watch?v=Mmp2gFwZXPs, https://www.youtube.com/watch?v=35Ui0XAkwmc, https://www.youtube.com/watch?v=SgnJdGXB3lE
 ```
-
+---
 If your ***case*** is to download even more massive videos, you can try passing the link of a public ***playlist***:
 
 ```
 https://www.youtube.com/playlist?list=PLzuFY9Ixj9Z6nf7z6t5YmPDTLBgksk8Ts
 ```
+---
+Or, if you prefer to download your favorite playlists from Spotify, just leave us your link!
+```
+https://open.spotify.com/playlist/03faf9Q9OSxLcfrtax9Wjn
+```
 
-
-
-## Authors
+## Author Contact
 
 - [GitHub Profile @ElHaban3ro](https://www.github.com/ElHaban3ro)
 - [Discord ! Die()#1274](https://discord.gg/9jbB6wnqX3)
@@ -44,7 +52,7 @@ https://www.youtube.com/playlist?list=PLzuFY9Ixj9Z6nf7z6t5YmPDTLBgksk8Ts
 
 ## Download Executable
 
-- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.2WIN-PORT.zip?raw=true)
+- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.3WIN-PORTABLE.zip?raw=true)
 - Download iMac! (Coming Soon)
 - Download Linux! (Coming Soon)
 
