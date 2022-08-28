@@ -1,8 +1,9 @@
 # from youtube_dl import YoutubeDL
+from urllib.error import HTTPError
+
 from yt_dlp import YoutubeDL
 
 import tkinter as tk
-import youtube_dl
 
 import os
 
@@ -97,23 +98,36 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
                 videos_list_names.append(name)
 
 
+            try:
+                # Miniature video.
+                miniature_video_link = video_info['thumbnails'][-1]['url']
+                # print(miniature_video_link)
+
+                
+                miniature = open(rf'{route_miniature}/miniature.png', 'wb')
+                miniature.write(urllib.request.urlopen(miniature_video_link).read())
+                miniature.close()
+                route_miniature = rf'{route_miniature}/miniature.png'
 
 
-            # Miniature video.
-            miniature_video_link = video_info['thumbnails'][-1]['url']
-            # print(miniature_video_link)
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature).resize((320, 180)))
 
+                put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
+                put_m.place(relx = .5, rely = .5, anchor = 'center')
+
+
+            except HTTPError:
+                miniature.close()
+                # Miniature video error
+                route_miniature = rf'Resources/Icons/error.miniature.png'
+
+
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature).resize((320, 180)))
+
+                put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
+                put_m.place(relx = .5, rely = .5, anchor = 'center')
+                pass
             
-            miniature = open(rf'{route_miniature}/miniature.png', 'wb')
-            miniature.write(urllib.request.urlopen(miniature_video_link).read())
-            miniature.close()
-            route_miniature = rf'{route_miniature}/miniature.png'
-
-
-            put_miniature = ImageTk.PhotoImage(Image.open(route_miniature).resize((320, 180)))
-
-            put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
-            put_m.place(relx = .5, rely = .5, anchor = 'center')
 
 
             def my_hook(d):
@@ -128,19 +142,10 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
-            # def speed_checks(s):
-            #     speed = s.get('speed')
-            #     ready = s.get('downloaded_bytes', 0)
-            #     total = s.get('total_bytes', 0)
-
-                # if speed and speed <= 77 * 1024 and ready >= total * 0.1:
-                #     print('Mu lento')
 
 
 
-
-
-            filename = fr'{route}\DownTool - {name}.mp4'
+            filename = fr'{route}\[DT] - {name}.mp4'
             options = {
                 'format': 'best', # ¿change?
                 'outtmpl': filename,
@@ -163,7 +168,6 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             percent_text['text'] = f""
             bytes_widget['text'] = f'Weight and format: 0MiB - ###'
 
-            os.remove(rf'{route_miniature}/miniature.png')
 
 
             if len(video) == 1:
@@ -181,10 +185,11 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             # print(list_history)
 
 
+
         except:
         # else:
 
-            tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
+            tk.messagebox.showerror('¡Error 404! test msg', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
 
 
     if len(video) > 1 and len(videos_list_names) > 0:
@@ -202,6 +207,12 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
     put_m.place(relx = .5, rely = .5, anchor = 'center')
     
     print(f'Se Ha hecho la descarga de: {video}')
+
+    try:
+        os.remove(rf'{route_miniature}/miniature.png')
+    except:
+        pass
+
     button['state'] = tk.NORMAL
     button['text'] = 'Download'
     title_widget['text'] = 'Unknown Video'

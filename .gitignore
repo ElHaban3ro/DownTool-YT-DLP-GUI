@@ -4,4 +4,6 @@ build
 dist
 .git
 FFmpeg
-tests.css
+tests
+DownApp.spec
+.cache

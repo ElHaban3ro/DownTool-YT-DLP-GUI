@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['DownApp.py'],
+    ['downapp.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -26,7 +26,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='DownApp',
+    name='downapp',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -47,5 +47,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='DownApp',
+    name='downapp',
 )

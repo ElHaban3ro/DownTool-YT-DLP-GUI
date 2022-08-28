@@ -18,8 +18,7 @@ from Modules.download_video import video_downloader
 from PopUps.configuration_popup import configWindow_popup
 from PopUps.aboutme_popup import aboutme_popup
 
-from Modules.download_from_playlist import playlist_download
-
+from Modules.download_spotify import audio_downloader_spotify
 
 # Config main window.
 root = tk.Tk() # Create "Window".
@@ -260,6 +259,11 @@ def download_function(): # Create new thread (bug)
 
         elif route == 'C:/':
             tk.messagebox.showerror('¡Error!', 'Make sure to choose a path other than C:/\n(This causes permission errors)')
+
+
+        elif 'https://open.spotify.com/playlist/' in input_link.get():
+            a = Thread(target = lambda: audio_downloader_spotify(link_spot_playlist = input_link.get(), button = download_button, inputContent= input_link, route = route, route_miniature = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text)).start()
+
 
 
 

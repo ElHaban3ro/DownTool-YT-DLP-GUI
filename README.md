@@ -2,22 +2,51 @@
 # DownTool (YouTube Videos Downloader, NO ADS)
 
 
-Welcome to DownTool, a tool to **download** videos from youtube in mass or single. If you want to pass several videos to download, it is important to pass the links separated by commas.
 
-The **App** is developed with the **Tkinter** graphical interface library and using **yt-dlp** to download the videos. The formats in which the videos are downloaded are in **MP3** format for audio, and **MP4** for video. As for the quality of the videos and audios, the best of the **videos/audios** is always taken, this can be easily changed by accessing the **quality** of the videos and in the download modules, change the format. Somewhere in the download modules there is a print **(commented)** for you to get the qualities, this thing about choosing the qualities because it really isn't what **I need**.
+Welcome to DownTool, a tool to **download** youtube videos in bulk or individually. 
+
+The **App** is developed with the **Tkinter** GUI library and uses **yt-dlp** to download the videos. The formats in which the videos are downloaded are **MP3** format for audio, and **MP4** for video. As for the quality of the videos and audios, the best of the **videos/audios** is always taken, this can be easily changed by accessing the **quality** of the videos and in the download modules, change the format. Somewhere in the download modules there is a **(commented)** printout for you to get the qualities, this is not really what I **need**.
 
 
-This app was developed with the aim of being able to download videos from YouTube en **masse** without having to deal with pages full of advertising. Do you want to improve it? Go ahead :) Fork
+This app was developed with the goal of being able to download YouTube videos in **mass** without having to deal with pages full of ads. Do you want to improve it? Go ahead :) Fork
+
+
+## ¿How Work?
+
+It is quite easy. The program prompts you for an ***input***, where you will enter your **link**. 
+
+
+You can do this either as a single link:
+
+```
+https://www.youtube.com/watch?v=-KkX7UVdTN8
+```
+
+Or several links separated by commas:
+```
+https://www.youtube.com/watch?v=nDZvMKfrzaM, https://www.youtube.com/watch?v=Mmp2gFwZXPs, https://www.youtube.com/watch?v=35Ui0XAkwmc, https://www.youtube.com/watch?v=SgnJdGXB3lE
+```
+
+If your ***case*** is to download even more massive videos, you can try passing the link of a public ***playlist***:
+
+```
+https://www.youtube.com/playlist?list=PLzuFY9Ixj9Z6nf7z6t5YmPDTLBgksk8Ts
+```
+
+
+
 ## Authors
 
-- [@ElHaban3ro](https://www.github.com/ElHaban3ro)
-- [Discord](https://discord.gg/9jbB6wnqX3)
+- [GitHub Profile @ElHaban3ro](https://www.github.com/ElHaban3ro)
+- [Discord ! Die()#1274](https://discord.gg/9jbB6wnqX3)
+- [Twitter @ElHaban3ro](https://twitter.com/ElHaban3ro)
 
 
 ## Download Executable
 
 - [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.2WIN-PORT.zip?raw=true)
-- Download Linux (Not available)
+- Download iMac! (Coming Soon)
+- Download Linux! (Coming Soon)
 
 
 
