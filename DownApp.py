@@ -262,13 +262,13 @@ def download_function(): # Create new thread (bug)
 
 
         elif 'https://open.spotify.com/playlist/' in input_link.get():
-            a = Thread(target = lambda: audio_downloader_spotify(link_spot_playlist = input_link.get(), button = download_button, inputContent= input_link, route = route, route_miniature = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text)).start()
+            a = Thread(target = lambda: audio_downloader_spotify(link_spot_playlist = input_link.get(), button = download_button, inputContent= input_link, route = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text, route_miniature = './Resources/Icons/')).start()
 
 
 
 
         else:      
-            a = Thread(target = lambda: audio_downloader(link_video = input_link.get(), button = download_button, inputContent= input_link, route = route, route_miniature = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text)).start()
+            a = Thread(target = lambda: audio_downloader(link_video = input_link.get(), button = download_button, inputContent= input_link, route = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text, route_miniature = './Resources/Icons/')).start()
 
 
 
@@ -283,7 +283,7 @@ def download_function(): # Create new thread (bug)
             tk.messagebox.showerror('¡Error!', 'Make sure to choose a path other than C:/\n(This causes permission errors)')
 
         else:
-            a = Thread(target = lambda: video_downloader(link_video = input_link.get(), button = download_button, inputContent= input_link, route = route, route_miniature = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text)).start()
+            a = Thread(target = lambda: video_downloader(link_video = input_link.get(), button = download_button, inputContent= input_link, route = route, folder_button = browser_button, frame = video_miniature, title_widget = features_text_title, channel = features_text_channel, percent_text = percent_text, restant_widget = restant_text, bytes_widget = features_text_more, checkbox_mp3 = mp3_option, checkbox_mp4 = mp4_option, list_history = downloads_history, h_text = history_text, route_miniature = './Resources/Icons/')).start()
 
 
     else:

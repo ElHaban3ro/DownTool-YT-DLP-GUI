@@ -101,10 +101,10 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
                 miniature = open(rf'{route_miniature}/miniature.png', 'wb')
                 miniature.write(urllib.request.urlopen(miniature_video_link).read())
                 miniature.close()
-                route_miniature = rf'{route_miniature}/miniature.png'
+                route_miniature_edit = rf'{route_miniature}/miniature.png'
 
 
-                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature).resize((320, 180)))
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
 
                 put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                 put_m.place(relx = .5, rely = .5, anchor = 'center')
@@ -113,10 +113,10 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             except HTTPError:
                 miniature.close()
                 # Miniature video error
-                route_miniature = rf'Resources/Icons/error.miniature.png'
+                route_miniature_edit = rf'Resources/Icons/error.miniature.png'
 
 
-                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature).resize((320, 180)))
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
 
                 put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                 put_m.place(relx = .5, rely = .5, anchor = 'center')
@@ -157,7 +157,6 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
-            route_miniature = route
 
 
             restant_widget['text'] = f"Approximate time: 00:00"
@@ -209,7 +208,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
     
 
     try:
-        os.remove(rf'{route_miniature}/miniature.png')
+        os.remove(rf'{route_miniature_edit}')
     except:
         pass
 
