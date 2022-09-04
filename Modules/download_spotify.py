@@ -278,7 +278,7 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                         img = open(covers_routes[count_songs], 'rb')
 
 
-                        song['artwork'] = img.read()
+                        song['artwork'] = img.read() # TODO: Eliminar los covers!!!!!! IMPORTANT.
 
 
                         img.close()

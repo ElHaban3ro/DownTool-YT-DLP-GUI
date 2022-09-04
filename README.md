@@ -11,6 +11,20 @@ The **App** is developed with the **Tkinter** GUI library and uses **yt-dlp** to
 This app was developed with the goal of being able to download YouTube videos in **mass** without having to deal with pages full of ads. Do you want to improve it? Go ahead :) Fork
 
 
+## UPDATE 1.4
+
+Update contain:
+
+- Now, when you download your **Spotify** playlists, they will include metadata: *The Cover*, *Album* and *Artist*!
+
+- This version does not come with an executable because I will soon update to add metadata to the other *download methods*!
+
+- Fixed the location of the temporary *thumbnail*!
+
+
+
+
+
 ## ¿How Work?
 
 It is quite easy. The program prompts you for an ***input***, where you will enter your **link**. 
