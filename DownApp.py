@@ -23,7 +23,6 @@ from Modules.download_spotify import audio_downloader_spotify
 # Config main window.
 root = tk.Tk() # Create "Window".
 
-# root.config(bg = wall_image) # Config window.
 
 
 res = [700, 415]
@@ -36,14 +35,6 @@ root.iconbitmap(r'.\Resources\Icons\DownTool_2.ico')
 
 
 
-# Background Image
-wall_image = './Resources/Icons/wallpaper.png'
-wall_image = PhotoImage(file = wall_image)
-
-
-# Transparent Image.
-transparent = './Resources/Icons/transparente.png'
-transparent = PhotoImage(file = transparent)
 
 
 fondo = tk.Label(root, text = '', font = ('Arial', 20, 'bold italic'), bg = '#FE5A56', fg = '#f5f5f5')

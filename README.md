@@ -16,7 +16,7 @@ This app was developed with the goal of being able to download YouTube videos in
 - Fixed several VERY important bugs.
 
 
-## UPDATE 1.4
+## UPDATE 1.4.5
 
 Update contain:
 
@@ -26,6 +26,13 @@ Update contain:
 
 - Fixed the location of the temporary *thumbnail*!
 
+- Metadata in ***all formats***!
+
+- Some bugs fixed!
+
+- Temporary thumbnail location moved !
+
+![Example Update](./example_update_1.4.5.jpg)
 
 
 
@@ -60,13 +67,13 @@ https://open.spotify.com/playlist/03faf9Q9OSxLcfrtax9Wjn
 ## Author Contact
 
 - [GitHub Profile @ElHaban3ro](https://www.github.com/ElHaban3ro)
-- [Discord ! Die()#1274](https://discord.gg/9jbB6wnqX3)
+- [Discord ! Die()#1274 or click here to join server!](https://discord.gg/9jbB6wnqX3)
 - [Twitter @ElHaban3ro](https://twitter.com/ElHaban3ro)
 
 
 ## Download Executable
 
-- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.3WIN-PORTABLE.zip?raw=true)
+- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.5WIN-PORTABLE.zip?raw=true)
 - Download iMac! (Coming Soon)
 - Download Linux! (Coming Soon)
 

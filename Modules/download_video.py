@@ -1,5 +1,6 @@
 # from youtube_dl import YoutubeDL
 from urllib.error import HTTPError
+import music_tag
 
 
 from yt_dlp import YoutubeDL
@@ -63,6 +64,7 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
     for index_video in range(len(video)):
+        
         try:
         # if True:
 
@@ -84,7 +86,7 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             name = name.replace('/', '-')
 
 
-            print(video_info)
+            # print(video_info)
 
             button['text'] = 'Download...'
 
@@ -101,7 +103,7 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
             try:
                 # Miniature video.
-                miniature_video_link = video_info['thumbnails'][-1]['url']
+                miniature_video_link = video_info['thumbnails'][-2]['url']
                 # print(miniature_video_link)
 
                 
@@ -159,6 +161,62 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
                 # ydl.add_progress_hook(speed_checks)
                 
                 d = ydl.download([video[index_video]])
+
+
+
+
+
+
+
+
+
+            route_m = route.replace('/', r"\\")
+            route_m = route_m.split(r'\\')
+
+            route_new = []
+
+            for e, i in enumerate(route_m):
+                if e == 1:
+                    route_new.append(fr'\{i}')
+
+                else:
+                    route_new.append(i)
+
+
+
+            route_m = os.path.join(*route_new)
+            name_m = name.replace('|', '#')
+
+            route_m = route_m + fr'\[DT] - {name_m}.mp4'
+
+            route_m = str(route_m)
+
+            # r = os.path.join(route_m)
+
+
+            song = music_tag.load_file(route_m)
+
+            song['artist'] = video_info["channel"]
+            song['album'] = 'DownTool Youtube'
+
+            
+
+
+            print(route_miniature_edit)
+            cover = open(route_miniature_edit, 'rb')
+
+
+            song['artwork'] = cover.read()
+
+
+            cover.close()
+
+
+            song.save()
+
+
+
+
 
 
 

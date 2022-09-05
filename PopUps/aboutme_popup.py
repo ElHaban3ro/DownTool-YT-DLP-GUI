@@ -26,7 +26,7 @@ def aboutme_popup(root):
 
     # Options:
         # predefined routed
-    p_route_text = tk.Label(config_window, text = f'Hello! Version 1.2 brings a new design\nand fixed some problems \nwith predefined paths!\n\nAlso, fixed problems with names that\ncontain "/".\nDownTool now supports playlist, what are you waiting for\ndownload your favourites?\n\n\n\n1.2 DownTool', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = 'white')
+    p_route_text = tk.Label(config_window, text = f'Actualización 1.4.5!\n- Metadata en todos los formatos!\n- Metada especial si descargas tus playlist de spotify!\n- Algunos bugs arreglados!\n- Ubicación de la miniatura temporal, movida.\n\n\n\n1.4.5 DownTool', font = ('Arial', 10, 'italic'), bg = '#FE5A56', fg = 'white')
     p_route_text.place(relx = .5, rely = .6, anchor = 'center')
 
 

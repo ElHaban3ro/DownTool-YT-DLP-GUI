@@ -44,9 +44,9 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
     if 'https://open.spotify.com/playlist/' in link_spot_playlist:
 
-        # try:
+        try:
 
-        if True:
+        # if True:
             main_artists = []
             album_names = []
             cover_urls = []
@@ -140,8 +140,8 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
                 link_song_spot = playlist_info
 
-                # try:
-                if True:
+                try:
+                # if True:
                     
                     for i in link_song_spot['entries']:
 
@@ -278,14 +278,18 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                         img = open(covers_routes[count_songs], 'rb')
 
 
-                        song['artwork'] = img.read() # TODO: Eliminar los covers!!!!!! IMPORTANT.
+                        song['artwork'] = img.read()
 
 
                         img.close()
 
-                        
 
                         song.save()
+                        os.remove(covers_routes[count_songs])
+
+
+
+
                         count_songs += 1
 
 
@@ -307,12 +311,12 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
                         
 
-                # except:
-                #     tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the playlist, make sure you have internet and have the correct link and try again)')
+                except:
+                    tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the playlist, make sure you have internet and have the correct link and try again)')
 
 
-        # except:
-        #     tk.messagebox.showerror('¡Error! ñ', 'Error 404. Make sure of the following: \nThe PlayList is not private. \nThe PlayList link is correct. \nYou have an internet connection.')
+        except:
+            tk.messagebox.showerror('¡Error! ñ', 'Error 404. Make sure of the following: \nThe PlayList is not private. \nThe PlayList link is correct. \nYou have an internet connection.')
 
 
 

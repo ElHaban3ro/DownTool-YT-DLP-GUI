@@ -1,6 +1,7 @@
 # Thrid modules.
 import time
 from urllib.error import HTTPError
+import music_tag
 from yt_dlp import YoutubeDL
 from PIL import ImageTk, Image
 import tkinter as tk
@@ -64,8 +65,8 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
     print(video)
 
     for index_video in range(len(video)):
-        try:
-
+        # try:
+        if True:
 
             video_info = YoutubeDL().extract_info(f'{video[index_video]}', download = 
             False)
@@ -94,7 +95,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
             try:
                 # Miniature video.
-                miniature_video_link = video_info['thumbnails'][-1]['url']
+                miniature_video_link = video_info['thumbnails'][-2]['url']
                 # print(miniature_video_link)
 
                 
@@ -102,6 +103,19 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
                 miniature.write(urllib.request.urlopen(miniature_video_link).read())
                 miniature.close()
                 route_miniature_edit = rf'{route_miniature}/miniature.png'
+
+
+
+                # cover_route = f'{route_miniature}/miniature.png'
+
+                # cover = open(f'{route_miniature}/miniature_cover.png', 'wb')
+
+                # cover.write(urllib.request.urlopen(str(miniature_video_link)).read())
+                # cover.close()
+
+
+
+
 
 
                 put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
@@ -113,7 +127,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             except HTTPError:
                 miniature.close()
                 # Miniature video error
-                route_miniature_edit = rf'Resources/Icons/error.miniature.png'
+                route_miniature_edit = rf'{route_miniature}/error.miniature.png'
 
 
                 put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
@@ -144,16 +158,70 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
             filename = fr'{route}\[DT] - {name}.mp3'
             options = {
-                'format': 'bestaudio/best',
-                'keepvideo': False,
-                'outtmpl': filename,
-                'progress_hooks': [my_hook]
+                    'format': '140',
+                    'keepvideo': False,
+                    'outtmpl': filename,
+                    'progress_hooks': [my_hook],
+                    'noplaylist': True,
+                    'acodec': 'Opus'
             }
 
             with YoutubeDL(options) as ydl:
                 d = ydl.download([video[index_video]])
 
-                # print(f'D tiene: {d["status"]}')
+
+
+                
+
+
+
+
+
+
+            route_m = route.replace('/', r"\\")
+            route_m = route_m.split(r'\\')
+
+            route_new = []
+
+            for e, i in enumerate(route_m):
+                if e == 1:
+                    route_new.append(fr'\{i}')
+
+                else:
+                    route_new.append(i)
+
+
+
+            route_m = os.path.join(*route_new)
+            name_m = name.replace('|', '#')
+
+            route_m = route_m + fr'\[DT] - {name_m}.mp3'
+
+            route_m = str(route_m)
+
+            # r = os.path.join(route_m)
+
+
+            song = music_tag.load_file(route_m)
+
+            song['artist'] = video_info["channel"]
+            song['album'] = 'DownTool Youtube'
+
+            
+
+
+            print(route_miniature_edit)
+            cover = open(route_miniature_edit, 'rb')
+
+
+            song['artwork'] = cover.read()
+
+
+            cover.close()
+
+
+            song.save()
+
 
 
 
@@ -164,6 +232,9 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             bytes_widget['text'] = f'Weight and format: 0MiB - ###'
 
             
+
+
+
 
             
 
@@ -184,9 +255,9 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
             print(list_history)
 
-        except:
+        # except:
             
-            tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
+        #     tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
 
 
     if len(video) > 1 and len(videos_list_names) > 0:
@@ -209,6 +280,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
     try:
         os.remove(rf'{route_miniature_edit}')
+
     except:
         pass
 
