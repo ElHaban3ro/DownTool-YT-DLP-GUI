@@ -69,7 +69,7 @@ https://open.spotify.com/playlist/03faf9Q9OSxLcfrtax9Wjn
 ## Download Executable
 
 - [Download Windows! (1.4.6)](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6WIN-PORTABLE.zip?raw=true)
-- [Download Linux! (1.4.6](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6LINUX-PORTABLE.zip?raw=true)
+- [Download Linux! (1.4.6)](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6LINUX-PORTABLE.zip?raw=true)
 - Download iMac! (Coming Soon)
 
 
