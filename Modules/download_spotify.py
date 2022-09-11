@@ -42,11 +42,13 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
     songs_urls_yt = []
     videos_list_names = []
 
+
+
     if 'https://open.spotify.com/playlist/' in link_spot_playlist:
 
-        try:
+        # try:
 
-        # if True:
+        if True:
             main_artists = []
             album_names = []
             cover_urls = []
@@ -78,15 +80,19 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
             for i in jumps[:-1]:
                 playlist_info = client.playlist_tracks(link_spot_playlist, offset = i)
-
+                
 
 
                 playlist_info = [playlist_info['items']]
                 
                 for i in playlist_info[0]:
                     try:
+                    # if True:
 
                         song_artists = ''
+
+                        print(i['track']['name'])
+
 
                         song_name = i["track"]["name"]
 
@@ -112,29 +118,31 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
                                                     
 
-                    except:
+                    except TypeError as err:
+                        print(err)
                         pass
 
 
-            print(cover_urls)
-            for cc, cover_link in enumerate(cover_urls):
-                cover_name = rf'{route_miniature}/{cc}.png'
-                covers_routes.append(cover_name)
+            # button['text'] = 'Spotify Covers Download...'
+            
+            # for cc, cover_link in enumerate(cover_urls):
+            #     cover_name = rf'{route_miniature}/{cc}.png'
+            #     covers_routes.append(cover_name)
 
-                cover = open(rf'{route_miniature}/{cc}.png', 'wb')
+            #     cover = open(rf'{route_miniature}/{cc}.png', 'wb')
             
 
-                cover.write(urllib.request.urlopen(cover_link).read())
-                cover.close()
+            #     cover.write(urllib.request.urlopen(cover_link).read())
+            #     cover.close()
 
 
 
 
 
 
-            count_songs = 0
+            # count_songs = 0
 
-            for song in songs:
+            for count_songs, song in enumerate(songs):
                     
                 playlist_info = YoutubeDL().extract_info(f'ytsearch:{song}', download = False)
 
@@ -183,27 +191,25 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
 
                         try:
-                            # Miniature video.
-                            miniature_video_link = video_info['thumbnails'][-1]['url']
-                            # print(miniature_video_link)
+                            cover_name = f'{route_miniature}/{count_songs}.png'
+                            covers_routes.append(cover_name)
 
-                            
-                            miniature = open(rf'{route_miniature}/miniature.png', 'wb')
-                            miniature.write(urllib.request.urlopen(miniature_video_link).read())
-                            miniature.close()
-                            
+                            cover = open(f'{route_miniature}/{count_songs}.png', 'wb')
+                        
+
+                            cover.write(urllib.request.urlopen(cover_urls[count_songs]).read())
+                            cover.close()
 
 
-                            put_miniature = ImageTk.PhotoImage(Image.open(rf'{route_miniature}/miniature.png').resize((320, 180)))
+
+
+                            put_miniature = ImageTk.PhotoImage(Image.open(f'{route_miniature}/{count_songs}.png').resize((180, 180)))
 
                             put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                             put_m.place(relx = .5, rely = .5, anchor = 'center')
 
 
                         except HTTPError:
-                            miniature.close()
-
-
                             put_miniature = ImageTk.PhotoImage(Image.open(rf'Resources/Icons/error.miniature.png').resize((320, 180)))
 
                             put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
@@ -289,8 +295,13 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
 
 
 
+                        list_history.insert(0, name)
+                        h_text['text'] = ''
 
-                        count_songs += 1
+                        for i in list_history:
+                            h_text['text'] = f'{h_text["text"] + i}\n'
+
+                        # count_songs += 1
 
 
 
@@ -315,8 +326,8 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                     tk.messagebox.showerror('¡Error 404!', 'Error 404. (Error downloading the playlist, make sure you have internet and have the correct link and try again)')
 
 
-        except:
-            tk.messagebox.showerror('¡Error! ñ', 'Error 404. Make sure of the following: \nThe PlayList is not private. \nThe PlayList link is correct. \nYou have an internet connection.')
+        # except:
+        #     tk.messagebox.showerror('¡Error! ñ', 'Error 404. Make sure of the following: \nThe PlayList is not private. \nThe PlayList link is correct. \nYou have an internet connection.')
 
 
 

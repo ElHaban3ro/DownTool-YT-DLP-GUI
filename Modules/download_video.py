@@ -65,8 +65,8 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
     for index_video in range(len(video)):
         
-        try:
-        # if True:
+        # try:
+        if True:
 
             video[index_video] = video[index_video].replace(' ', '')
             video_info = YoutubeDL().extract_info(f'{video[index_video]}', download = 
@@ -76,10 +76,11 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             json_video_info = json.dumps(video_info, indent = 4)
             # print(json_video_info)
 
-            # print(video_info['formats'][0]['format'])
 
-            for i in range(len(video_info['formats'])):
-                print(video_info['formats'][i]['format'])
+
+            # Video formats / resolutions. ¿Activate?
+            # for i in range(len(video_info['formats'])):
+            #     print(video_info['formats'][i]['format'])
             
 
             name = video_info['title']
@@ -102,18 +103,29 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
             try:
-                # Miniature video.
-                miniature_video_link = video_info['thumbnails'][-2]['url']
-                # print(miniature_video_link)
+                # Miniature video. 
+                
 
                 
+                if len(video_info['thumbnails']) == 46:
+                    miniature_video_link = video_info['thumbnails'][-1]['url']
+                
+                else:
+                    miniature_video_link = video_info['thumbnails'][30]['url']
+    
                 miniature = open(rf'{route_miniature}/miniature.png', 'wb')
                 miniature.write(urllib.request.urlopen(miniature_video_link).read())
                 miniature.close()
                 route_miniature_edit = rf'{route_miniature}/miniature.png'
 
 
-                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
+
+                miniature_recode = Image.open(route_miniature_edit).resize((320, 180))
+
+                miniature_recode.save(f'{route_miniature}/miniature.png')
+
+
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit))
 
                 put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                 put_m.place(relx = .5, rely = .5, anchor = 'center')
@@ -145,6 +157,12 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
+
+
+            
+            name = name.replace('¿', '')
+            name = name.replace('?', '#')
+            name = name.replace('"', '')
 
 
 
@@ -191,8 +209,10 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
             route_m = str(route_m)
 
-            # r = os.path.join(route_m)
+            
 
+            
+            button['text'] = 'Editing metadata...'
 
             song = music_tag.load_file(route_m)
 
@@ -201,15 +221,16 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
             
 
-
-            print(route_miniature_edit)
-            cover = open(route_miniature_edit, 'rb')
-
-
-            song['artwork'] = cover.read()
+            if route_miniature_edit != f'Resources/Icons/error.miniature.png':
+    
+                print(route_miniature_edit)
+                cover = open(route_miniature_edit, 'rb')
 
 
-            cover.close()
+                song['artwork'] = cover.read()
+
+
+                cover.close()
 
 
             song.save()
@@ -244,10 +265,10 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
-        except:
-        # else:
+        # except:
+        # # else:
 
-            tk.messagebox.showerror('¡Error 404! test msg', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
+        #     tk.messagebox.showerror('¡Error 404! test msg', 'Error 404. (Error downloading the video, make sure you have internet and have the correct link and try again)')
 
 
     if len(video) > 1 and len(videos_list_names) > 0:
@@ -267,7 +288,8 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
     print(f'Se Ha hecho la descarga de: {video}')
 
     try:
-        os.remove(rf'{route_miniature_edit}')
+        if route_miniature_edit != f'Resources/Icons/error.miniature.png':
+            os.remove(rf'{route_miniature_edit}')
     except:
         pass
 

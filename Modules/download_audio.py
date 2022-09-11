@@ -93,12 +93,17 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
+
             try:
                 # Miniature video.
-                miniature_video_link = video_info['thumbnails'][-2]['url']
-                # print(miniature_video_link)
 
+                # 35 funciona, pero es una resolución bastante extraña.
+                if len(video_info['thumbnails']) == 46:
+                    miniature_video_link = video_info['thumbnails'][-1]['url']
                 
+                else:
+                    miniature_video_link = video_info['thumbnails'][30]['url']
+    
                 miniature = open(rf'{route_miniature}/miniature.png', 'wb')
                 miniature.write(urllib.request.urlopen(miniature_video_link).read())
                 miniature.close()
@@ -106,19 +111,12 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
-                # cover_route = f'{route_miniature}/miniature.png'
+                miniature_recode = Image.open(route_miniature_edit).resize((320, 180))
 
-                # cover = open(f'{route_miniature}/miniature_cover.png', 'wb')
-
-                # cover.write(urllib.request.urlopen(str(miniature_video_link)).read())
-                # cover.close()
+                miniature_recode.save(f'{route_miniature}/miniature.png')
 
 
-
-
-
-
-                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
+                put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit))
 
                 put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                 put_m.place(relx = .5, rely = .5, anchor = 'center')
@@ -127,7 +125,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             except HTTPError:
                 miniature.close()
                 # Miniature video error
-                route_miniature_edit = rf'{route_miniature}/error.miniature.png'
+                route_miniature_edit = rf'Resources/Icons/error.miniature.png'
 
 
                 put_miniature = ImageTk.PhotoImage(Image.open(route_miniature_edit).resize((320, 180)))
@@ -135,6 +133,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
                 put_m = tk.Label(frame, image = put_miniature, bg = '#260b12')
                 put_m.place(relx = .5, rely = .5, anchor = 'center')
                 pass
+            
             
 
 
@@ -154,6 +153,10 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
+            name = name.replace('¿', '')
+            name = name.replace('"', '')
+            name = name.replace('?', '#')
+
 
 
             filename = fr'{route}\[DT] - {name}.mp3'
@@ -172,9 +175,6 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
                 
-
-
-
 
 
 
@@ -199,8 +199,10 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
             route_m = str(route_m)
 
-            # r = os.path.join(route_m)
+            
 
+            
+            button['text'] = 'Editing metadata...'
 
             song = music_tag.load_file(route_m)
 
@@ -209,20 +211,19 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
             
 
-
-            print(route_miniature_edit)
-            cover = open(route_miniature_edit, 'rb')
-
-
-            song['artwork'] = cover.read()
+            if route_miniature_edit != f'Resources/Icons/error.miniature.png':
+    
+                print(route_miniature_edit)
+                cover = open(route_miniature_edit, 'rb')
 
 
-            cover.close()
+                song['artwork'] = cover.read()
+
+
+                cover.close()
 
 
             song.save()
-
-
 
 
 
@@ -279,7 +280,8 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
     
 
     try:
-        os.remove(rf'{route_miniature_edit}')
+        if route_miniature_edit != f'Resources/Icons/error.miniature.png':
+                    os.remove(rf'{route_miniature_edit}')
 
     except:
         pass

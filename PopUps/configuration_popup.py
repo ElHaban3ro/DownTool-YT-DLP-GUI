@@ -8,11 +8,10 @@ from tkinter import ttk, filedialog, PhotoImage
 
 
 # Config Window:
-def configWindow_popup(root, route, routes_list, file_route, function_open, back_image):
+def configWindow_popup(root, route, routes_list, file_route, function_open):
 
 
     # Background Image
-    wall_image = PhotoImage(file = back_image)
 
     config_window = tk.Toplevel(root)
 
