@@ -6,7 +6,7 @@ import os
 import json
 import urllib.request
 import music_tag
-
+import re
 
 from urllib.error import HTTPError
 
@@ -35,7 +35,7 @@ print('Connected to spotify.\n\n\n\n\n')
 
 
 
-def audio_downloader_spotify(button, link_spot_playlist, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
+def audio_downloader_spotify(button, link_spot_playlist, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, percent_bar_obj, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
 
 
     songs = []
@@ -61,7 +61,11 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
             folder_button['state'] = 'disabled'
             button['text'] = 'Get Spotify Playlist Info...'
 
-            
+
+            percent_bar_obj['mode'] = 'indeterminate'
+            percent_bar_obj.start(10)
+
+
 
             checkbox_mp3['state'] = 'disabled'
             checkbox_mp4['state'] = 'disabled'
@@ -216,6 +220,8 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                             put_m.place(relx = .5, rely = .5, anchor = 'center')
                             pass
 
+                        percent_bar_obj.stop()
+                        percent_bar_obj['mode'] = 'determinate'
 
                         def my_hook(d):
                                 if d['status'] == 'downloading':
@@ -224,6 +230,11 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                                     restant_widget['text'] = f"Approximate time: {d['_eta_str']}"
                                     percent_text['text'] = f"{d['_percent_str']}"
                                     bytes_widget['text'] = f'Weight and format: {d["_total_bytes_str"]} - MP4'
+
+                                    p = re.sub(r'\033\[(\d|;)+?m', '', p)
+                                    p = float(p)
+
+                                    percent_bar_obj['value'] = p
 
 
 
@@ -242,6 +253,7 @@ def audio_downloader_spotify(button, link_spot_playlist, list_history, inputCont
                         with YoutubeDL(options) as ydl:
                             d = ydl.download(i['webpage_url'])
 
+                        percent_bar_obj['value'] = 0.0
 
 
 

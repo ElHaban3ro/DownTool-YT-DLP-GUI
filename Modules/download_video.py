@@ -1,7 +1,7 @@
 # from youtube_dl import YoutubeDL
 from urllib.error import HTTPError
 import music_tag
-
+import re
 
 from yt_dlp import YoutubeDL
 
@@ -15,7 +15,7 @@ import urllib.request
 from PIL import ImageTk, Image
 
 
-def video_downloader(button, link_video, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
+def video_downloader(button, link_video, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, percent_bar_obj,restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
 
 
     video = []
@@ -32,13 +32,17 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
             button['text'] = 'Get PlayList Info...'
 
 
+            percent_bar_obj['mode'] = 'indeterminate'
+            percent_bar_obj.start(10)
+
+
             checkbox_mp3['state'] = 'disabled'
             checkbox_mp4['state'] = 'disabled'
 
 
             playlist_info = YoutubeDL().extract_info(link_video, download = 
             False)
-            
+           
 
             for i in playlist_info['entries']:
                 video.append(i['webpage_url'])
@@ -58,6 +62,9 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
         checkbox_mp3['state'] = 'disabled'
         checkbox_mp4['state'] = 'disabled'
+
+        percent_bar_obj['mode'] = 'indeterminate'
+        percent_bar_obj.start(10)
 
 
 
@@ -85,6 +92,8 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
 
             name = video_info['title']
             name = name.replace('/', '-')
+            name = name.replace(':', '-')
+
 
 
             # print(video_info)
@@ -144,6 +153,9 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
                 pass
             
 
+            percent_bar_obj.stop()
+            percent_bar_obj['mode'] = 'determinate'
+
 
             def my_hook(d):
                     if d['status'] == 'downloading':
@@ -153,7 +165,11 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
                         percent_text['text'] = f"{d['_percent_str']}"
                         bytes_widget['text'] = f'Weight and format: {d["_total_bytes_str"]} - MP4'
 
-                        
+                        p = re.sub(r'\033\[(\d|;)+?m', '', p)
+                        p = float(p)
+
+                        percent_bar_obj['value'] = p
+
 
 
 
@@ -179,6 +195,9 @@ def video_downloader(button, link_video, list_history, inputContent, frame, fold
                 # ydl.add_progress_hook(speed_checks)
                 
                 d = ydl.download([video[index_video]])
+
+
+            percent_bar_obj['value'] = 0.0
 
 
 

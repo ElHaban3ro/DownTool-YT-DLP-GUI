@@ -10,10 +10,11 @@ from threading import Thread
 import json
 import urllib.request
 
+import re
 
 
 
-def audio_downloader(button, link_video, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
+def audio_downloader(button, link_video, list_history, inputContent, frame, folder_button, channel, title_widget, percent_text, percent_bar_obj, restant_widget, bytes_widget, checkbox_mp3, checkbox_mp4, h_text, route = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test', route_miniature = r'C:\Users\ferdh\Desktop\Projects\DownTool\Descargas test'):
 
     video = []
     videos_list_names = []
@@ -28,6 +29,11 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             inputContent['state'] = 'disabled'
             folder_button['state'] = 'disabled'
             button['text'] = 'Get Playlist Info...'
+
+            percent_bar_obj['mode'] = 'indeterminate'
+            percent_bar_obj.start(10)
+
+
 
 
             checkbox_mp3['state'] = 'disabled'
@@ -53,6 +59,10 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
         folder_button['state'] = 'disabled'
         button['text'] = 'Get Info...'
 
+        percent_bar_obj['mode'] = 'indeterminate'
+        percent_bar_obj.start(10)
+
+
 
         checkbox_mp3['state'] = 'disabled'
         checkbox_mp4['state'] = 'disabled'
@@ -71,9 +81,14 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             video_info = YoutubeDL().extract_info(f'{video[index_video]}', download = 
             False)
 
+
             name = video_info['title']
 
             name = name.replace('/', '-')
+            name = name.replace(':', '-')
+
+
+
 
             button['text'] = 'Download...'
 
@@ -139,6 +154,8 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
 
 
 
+            percent_bar_obj.stop()
+            percent_bar_obj['mode'] = 'determinate'
 
             def my_hook(d):
                     if d['status'] == 'downloading':
@@ -147,6 +164,11 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
                         restant_widget['text'] = f"Approximate time: {d['_eta_str']}"
                         percent_text['text'] = f"{d['_percent_str']}"
                         bytes_widget['text'] = f'Weight and format: {d["_total_bytes_str"]} - MP4'
+
+                        p = re.sub(r'\033\[(\d|;)+?m', '', p)
+                        p = float(p)
+
+                        percent_bar_obj['value'] = p
 
 
 
@@ -172,6 +194,7 @@ def audio_downloader(button, link_video, list_history, inputContent, frame, fold
             with YoutubeDL(options) as ydl:
                 d = ydl.download([video[index_video]])
 
+            percent_bar_obj['value'] = 0.0
 
 
                 

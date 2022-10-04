@@ -10,22 +10,14 @@ The **App** is developed with the **Tkinter** GUI library and uses **yt-dlp** to
 
 This app was developed with the goal of being able to download YouTube videos in **mass** without having to deal with pages full of ads. Do you want to improve it? Go ahead :) Fork
 
-## (1.4.6) What's new?
+## (1.5) What's new?
 Update contain:
 
-- Fixed ***SEVERAL*** bugs.
+- Add **feedback** bar!!!!
+
+- Fixed ***SEVERAL*** bugs (yes, x40450684).
 
 - Now, when you download your **Spotify** playlists, they will include metadata: *The Cover*, *Album* and *Artist*!
-
-- This version does not come with an executable because I will soon update to add metadata to the other *download methods*!
-
-- Fixed the location of the temporary *thumbnail*!
-
-- Metadata in ***all formats***!
-
-- Some bugs fixed!
-
-- Temporary thumbnail location moved !
 
 ![Example Update](./example_update_1.4.5.jpg)
 
@@ -62,15 +54,15 @@ https://open.spotify.com/playlist/03faf9Q9OSxLcfrtax9Wjn
 ## Author Contact
 
 - [GitHub Profile @ElHaban3ro](https://www.github.com/ElHaban3ro)
-- [Discord ! Die()#1274 or click here to join server!](https://discord.gg/9jbB6wnqX3)
+- [Discord ! Die()#1274 or click here to join my server!](https://discord.gg/9jbB6wnqX3)
 - [Twitter @ElHaban3ro](https://twitter.com/ElHaban3ro)
 
 
 ## Download Executable
 
-- [Download Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6WIN-PORTABLE.zip?raw=true)
-- Download iMac! (Coming Soon)
-- Download Linux! (Coming Soon)
+- [Download to Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.5WIN-PORTABLE.zip?raw=true)
+- [Download to Linux!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6LINUX-PORTABLE.tar.gz?raw=true)
+- Download to iMac! (Coming Soon)
 
 
 
@@ -95,4 +87,4 @@ If you want to create a package for your operating system, use the command:
 
 And then move the ***Resources*** folder to ***dist/DownApp/***.
 
-We do this so that the resources like images or fonts work correctly. Once this is done you can use the executable.Next, you can remove the folder from the ***dist*** directory and delete these two: ***dist*** and ***build***.
+We do this so that the resources like images or fonts work correctly. Once this is done you can use the executable. Next, you can remove the folder from the ***dist*** directory and delete these two: ***dist*** and ***build***.
