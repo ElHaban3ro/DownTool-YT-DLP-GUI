@@ -10,16 +10,10 @@ The **App** is developed with the **Tkinter** GUI library and uses **yt-dlp** to
 
 This app was developed with the goal of being able to download YouTube videos in **mass** without having to deal with pages full of ads. Do you want to improve it? Go ahead :) Fork
 
-## (1.5) What's new?
+## (1.6) What's new?
 Update contain:
 
-- Add **feedback** bar!!!!
-
-- Fixed ***SEVERAL*** bugs (yes, x40450684).
-
-- Now, when you download your **Spotify** playlists, they will include metadata: *The Cover*, *Album* and *Artist*!
-
-![Example Update](./example_update_1.4.5.jpg)
+- Fixed bugs to re run DownTool.
 
 
 
@@ -60,8 +54,8 @@ https://open.spotify.com/playlist/03faf9Q9OSxLcfrtax9Wjn
 
 ## Download Executable
 
-- [Download to Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.5WIN-PORTABLE.zip?raw=true)
-- [Download to Linux!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.4.6LINUX-PORTABLE.tar.gz?raw=true)
+- [Download to Windows!](https://github.com/ElHaban3ro/DownTool-YT-DLP-GUI/blob/main/DownTool%201.6WIN-PORTABLE.zip?raw=true)
+- Download to Linux (Coming Soon)
 - Download to iMac! (Coming Soon)
 
 
